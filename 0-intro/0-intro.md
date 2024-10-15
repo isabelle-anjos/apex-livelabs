@@ -4,7 +4,7 @@
 
 Desde a síntese precisa de dados complexos até a criação de respostas contextuais, a IA Generativa está à frente de uma mudança tecnológica, prometendo redefinir como navegamos e utilizamos conhecimento em nossas interações diárias. Com a introdução do desenvolvimento assistido por IA no Oracle APEX, habilitar suas aplicações com recursos de IA generativa nunca foi tão fácil.
 
-Neste workshop, você aprenderá a trazer recursos de IA generativa baseados em grandes modelos de linguagem (LLMs) para suas aplicações construídas com Oracle APEX, sua plataforma low-code favorita. O serviço de IA Generativa pode ser acessado por meio de APIs REST, e ao usar os poderosos recursos de Fonte de Dados REST do APEX, você pode incorporar essa tecnologia avançada em suas aplicações de maneira simples e de baixa codificação.
+Neste workshop, você aprenderá a trazer recursos de IA generativa baseados em grandes modelos de linguagem (LLMs) para suas aplicações construídas com Oracle APEX, sua plataforma low-code favorita. O serviço de IA Generativa pode ser acessado por meio de APIs REST, e ao usar os poderosos recursos de REST Data Source do APEX, você pode incorporar essa tecnologia avançada em suas aplicações de maneira simples e de baixa codificação.
 
 <!-- ## O que é o serviço de IA Generativa da OCI?
 
@@ -23,7 +23,7 @@ Tempo Estimado: 60 minutos
 
 ### **Objetivos**
 
-* Implementar Pesquisa Facetada para Cartões e Regiões de Mapa para filtrar e buscar a melhor escola.
+* Implementar Faceted Search para Cards e Map Regions para filtrar e buscar a melhor escola.
 * Construir um chatbot conversacional usando IA Generativa para fazer perguntas sobre uma escola.
 * Gerar e-mail usando IA Generativa para aplicar para uma escola.
 
@@ -42,7 +42,7 @@ Tempo Estimado: 60 minutos
 
 - Um compartimento OCI. Uma conta Oracle Cloud vem com dois compartimentos pré-configurados - A tenência (compartimento raiz) e o ManagedCompartmentForPaaS (criado pela Oracle para serviços da Plataforma Oracle).
 
-- O usuário logado deve ter privilégios necessários para criar e gerenciar instâncias de Banco de Dados Autônomo nesse compartimento. Você pode configurar esses privilégios por meio de uma Política de IAM OCI. Se você estiver usando uma conta Free Tier, é provável que já possua todos os privilégios necessários.
+- O usuário logado deve ter privilégios necessários para criar e gerenciar instâncias de Autonomous Database nesse compartimento. Você pode configurar esses privilégios por meio de uma OCI IAM Policy. Se você estiver usando uma conta Free Tier, é provável que já possua todos os privilégios necessários.
 
 - Um workspace APEX 24.1.2. Recomendamos que você se inscreva para um workspace em [apex.oracle.com](https://apex.oracle.com). Consulte o lab [Get Started: Option 3](?lab=1-sign-up-apex#Option3:apexoraclecom) para se inscrever em um novo workspace.
 
@@ -73,21 +73,21 @@ Se você tiver algum problema ou o aplicativo não estiver funcionando como espe
 
 2. Importe o arquivo **nyc-gen-ai-app.zip** para seu workspace. Para importar o app, vá para **App Builder > Import**.
 
-3. Siga os passos no assistente de Instalar Aplicação para instalar o app junto com os Objetos Suporte.
+3. Siga os passos no assistente de Install Application para instalar o app junto com os Supporting Objects.
 
 4. Uma vez que a aplicação esteja instalada, navegue até **App Builder > Workspace Utilities > Web Credentials**.
 
-5. Edite os detalhes de **apex\_ai\_cred** para que correspondam à sua Chave da API OCI. Consulte o lab: [Configurar as Chaves da API OCI](?lab=3-configure-oci) para criar uma Chave da API OCI.
+5. Edite os detalhes de **apex\_ai\_cred** para que correspondam à sua Chave da API OCI. Consulte o lab: [Configure the OCI API Keys](?lab=3-configure-oci) para criar uma Chave da API OCI.
 
      ![Página de Credenciais da Web](images/edit-web-cred.png " ")
 6. Navegue até **App Builder > Workspace Utilities > Generative AI**. Edite o serviço **OCI Gen AI**.
 
     - Insira o **ID do Compartimento**. Consulte a [Documentação](https://docs.oracle.com/en-us/iaas/Content/GSG/Tasks/contactingsupport_topic-Locating_Oracle_Cloud_Infrastructure_IDs.htm#:~:text=Finding%20the%20OCID%20of%20a,displayed%20next%20to%20each%20compartment.) para obter seu ID de Compartimento. Se você tiver apenas um compartimento, use o OCID do arquivo de configuração que você salvou ao criar sua Chave da API OCI.
-    - Para Credencial, selecione **apex\_ai\_cred**.
-    - Clique em **Aplicar Alterações**.
+    - Para Credential, selecione **apex\_ai\_cred**.
+    - Clique em **Apply Changes**.
     ![Página de IA Generativa](images/edit-oci-genai.png " ")
 
-7. Pronto. Agora, execute a aplicação e veja-a em ação! Siga o lab: [Executar a Aplicação](?lab=6-run-app) para rodar o app.
+7. Pronto. Agora, execute a aplicação e veja-a em ação! Siga o lab: [Run the Application](?lab=6-run-app) para rodar o app.
 
 ## Saiba Mais - *Links Úteis*
 
