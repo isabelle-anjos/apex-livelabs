@@ -4,35 +4,35 @@
 	"tutorials": [
     {
       "title": "Introduction",
-      "filename": "/0-intro/0-intro.md"
+      "filename": "0-intro/0-intro.md"
     },
     {
       "title": "Get Started",
-      "filename": "/common-241/1-sign-up-apex/1-sign-up-apex.md"
+      "filename": "common-241/1-sign-up-apex/1-sign-up-apex.md"
     },
     {
       "title": "Lab 1: Create an APEX App",
-      "filename": "/1-create-app/1-create-app.md"
+      "filename": "1-create-app/1-create-app.md"
     },
     {
       "title": "Lab 2: Visualize Schools on a Map",
-      "filename": "/2-schools-on-map/2-schools-on-map.md"
+      "filename": "2-schools-on-map/2-schools-on-map.md"
     },
     {
       "title": "Lab 3: Configure the OCI API Keys",
-      "filename": "/3-configure-oci/3-configure-oci.md"
+      "filename": "3-configure-oci/3-configure-oci.md"
     },
     {
       "title": "Lab 4: Build a Conversational Inquiry using Generative AI",
-      "filename": "/4-using-genai/4-using-genai.md"
+      "filename": "4-using-genai/4-using-genai.md"
     },
     {
       "title": "Lab 5: Generate Email to Apply to a School using Gen AI",
-      "filename": "/5-apply-to-school/5-apply-to-school.md"
+      "filename": "5-apply-to-school/5-apply-to-school.md"
     },
     {
       "title": "Lab 6: Run the Application",
-      "filename": "/6-run-app/6-run-app.md"
+      "filename": "6-run-app/6-run-app.md"
     },
     {
       "title": "Need Help?",
