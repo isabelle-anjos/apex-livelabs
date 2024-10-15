@@ -1,104 +1,104 @@
-# Introduction
+# Introdução
 
-## About this Workshop
+## Sobre este Workshop
 
-From precisely summarizing intricate data to crafting context-aware responses, Generative AI stands at the forefront of a technological shift, promising to redefine how we navigate and leverage knowledge in our day-to-day interactions. With the introduction of AI assisted development in Oracle APEX, enabling your applications with generative AI capabilities has never been easier.
+Desde a síntese precisa de dados complexos até a criação de respostas contextuais, a IA Generativa está à frente de uma mudança tecnológica, prometendo redefinir como navegamos e utilizamos conhecimento em nossas interações diárias. Com a introdução do desenvolvimento assistido por IA no Oracle APEX, habilitar suas aplicações com recursos de IA generativa nunca foi tão fácil.
 
-In this workshop, you learn to bring generative AI capabilities based on large language models (LLMs) to your applications built using Oracle APEX, your favourite low-code platform. The Generative AI service can be accessed through REST APIs, and by using the powerful REST Data Source capabilities of APEX, you can effortlessly incorporate this advanced technology into your applications with a low-code approach.
+Neste workshop, você aprenderá a trazer recursos de IA generativa baseados em grandes modelos de linguagem (LLMs) para suas aplicações construídas com Oracle APEX, sua plataforma low-code favorita. O serviço de IA Generativa pode ser acessado por meio de APIs REST, e ao usar os poderosos recursos de Fonte de Dados REST do APEX, você pode incorporar essa tecnologia avançada em suas aplicações de maneira simples e de baixa codificação.
 
-<!-- ## What is OCI Generative AI service?
+<!-- ## O que é o serviço de IA Generativa da OCI?
 
-[Oracle Cloud Infrastructure Generative AI](https://www.oracle.com/artificial-intelligence/generative-ai/large-language-models/) is a fully managed service that provides a set of state-of-the-art, customizable large language models (LLMs) that cover a wide range of use cases for text generation. Generative AI currently supports the following pre-trained foundational models available from Meta and Cohere:
+[Oracle Cloud Infrastructure Generative AI](https://www.oracle.com/artificial-intelligence/generative-ai/large-language-models/) é um serviço totalmente gerenciado que fornece um conjunto de modelos de linguagem de última geração e personalizáveis que cobrem uma ampla variedade de casos de uso para geração de texto. A IA Generativa atualmente suporta os seguintes modelos fundamentais pré-treinados disponíveis da Meta e Cohere:
 
 - Llama 2
 - Command
 - Summarize
 - Embed
 
-You can read more about these models from the [documentation](https://docs.oracle.com/en-us/iaas/Content/generative-ai/pretrained-models.htm). -->
+Você pode ler mais sobre esses modelos na [documentação](https://docs.oracle.com/en-us/iaas/Content/generative-ai/pretrained-models.htm). -->
 
-This workshop will guide you through the process of utilizing the generation models within the Generative AI Service to develop an "Ask Questions" feature for the New York High Schools APEX application. This functionality empowers parents to inquire about school facilities, policies, and more, aiding them in making an informed decision about whether a specific school is the ideal fit for their child.
+Este workshop irá guiá-lo pelo processo de utilizar os modelos de geração dentro do Serviço de IA Generativa para desenvolver um recurso de "Fazer Perguntas" para o aplicativo APEX das Escolas de Ensino Médio de Nova York. Esta funcionalidade permite que os pais façam perguntas sobre instalações, políticas e muito mais, ajudando-os a decidir se uma escola específica é a escolha ideal para seu filho.
 
-Estimated Time: 60 minutes
+Tempo Estimado: 60 minutos
 
-### **Objectives**
+### **Objetivos**
 
-* Implement Faceted Search for Cards and Map Regions to filter and search for the best school.
-* Build a conversational chatbot using Generative AI to ask questions about a school.
-* Generate Email using Generative AI to apply to a school.
+* Implementar Pesquisa Facetada para Cartões e Regiões de Mapa para filtrar e buscar a melhor escola.
+* Construir um chatbot conversacional usando IA Generativa para fazer perguntas sobre uma escola.
+* Gerar e-mail usando IA Generativa para aplicar para uma escola.
 
-*Note: This workshop assumes you are using Oracle APEX 24.1.2 or later.*
+*Nota: Este workshop pressupõe o uso do Oracle APEX 24.1.2 ou superior.*
 
-## Prerequisites
+## Pré-requisitos
 
-- A paid Oracle Cloud Infrastructure (OCI) account or a FREE Oracle Cloud account with $300 credits for 30 days to use on other services. Read more about it at: [oracle.com/cloud/free/](https://www.oracle.com/cloud/free/). The OCI account must be created in or subscribed to one of the regions that supports OCI Generative AI Service. Currently, OCI Generative AI Service is supported in the following regions:
+- Uma conta paga na Oracle Cloud Infrastructure (OCI) ou uma conta GRATUITA na Oracle Cloud com $300 em créditos por 30 dias para usar em outros serviços. Saiba mais em: [oracle.com/cloud/free/](https://www.oracle.com/cloud/free/). A conta OCI deve ser criada ou assinada em uma das regiões que suportam o Serviço de IA Generativa da OCI. Atualmente, o Serviço de IA Generativa da OCI é suportado nas seguintes regiões:
 
-    - US Midwest (Chicago)
-    - Germany Central (Frankfurt)
-    - UK South (London)
-    - Brazil East (Sao Paulo)
+    - Centro-Oeste dos EUA (Chicago)
+    - Centro da Alemanha (Frankfurt)
+    - Sul do Reino Unido (Londres)
+    - Leste do Brasil (São Paulo)
 
-- This workshop makes use of OCI Generative AI Service. OCI Generative AI service is available in limited regions. To see if your cloud region supports OCI Generative AI service, visit the [documentation](https://docs.oracle.com/en-us/iaas/Content/generative-ai/overview.htm#regions).
+- Este workshop utiliza o Serviço de IA Generativa da OCI. O serviço de IA Generativa da OCI está disponível em regiões limitadas. Para verificar se sua região de cloud suporta o serviço de IA Generativa da OCI, visite a [documentação](https://docs.oracle.com/en-us/iaas/Content/generative-ai/overview.htm#regions).
 
-- An OCI compartment. An Oracle Cloud account comes with two pre-configured compartments - The tenancy (root compartment) and ManagedCompartmentForPaaS (created by Oracle for Oracle Platform services).
+- Um compartimento OCI. Uma conta Oracle Cloud vem com dois compartimentos pré-configurados - A tenência (compartimento raiz) e o ManagedCompartmentForPaaS (criado pela Oracle para serviços da Plataforma Oracle).
 
-- The logged-in user should have the necessary privileges to create and manage Autonomous Database instances in this compartment. You can configure these privileges via an OCI IAM Policy. If you are using a Free Tier account, it is likely that you already have all the necessary privileges.
+- O usuário logado deve ter privilégios necessários para criar e gerenciar instâncias de Banco de Dados Autônomo nesse compartimento. Você pode configurar esses privilégios por meio de uma Política de IAM OCI. Se você estiver usando uma conta Free Tier, é provável que já possua todos os privilégios necessários.
 
-- An APEX 24.1.2 workspace. We recommend that you sign up for a workspace on [apex.oracle.com](https://apex.oracle.com). Refer to the [Get Started: Option 3](?lab=1-sign-up-apex#Option3:apexoraclecom) lab to sign up for a new workspace.
+- Um workspace APEX 24.1.2. Recomendamos que você se inscreva para um workspace em [apex.oracle.com](https://apex.oracle.com). Consulte o lab [Get Started: Option 3](?lab=1-sign-up-apex#Option3:apexoraclecom) para se inscrever em um novo workspace.
 
-*Note: This workshop assumes you are using Oracle APEX 24.1.2. Some of the features might not be available in prior releases and the instructions, flow, and screenshots might differ if you use an older version of Oracle APEX.*
+*Nota: Este workshop pressupõe o uso do Oracle APEX 24.1.2. Alguns recursos podem não estar disponíveis em versões anteriores, e as instruções, fluxo e capturas de tela podem diferir se você usar uma versão mais antiga do Oracle APEX.*
 
-## Labs
+## Laboratórios
 
-| Module | Est. Time |
+| Módulo | Tempo Estimado |
 | --- | --- |
-| [Creating an APEX application](?lab=1-create-app) | 5 minutes |
-| [Visualize Schools on a Map](?lab=2-schools-on-map) | 10 minutes |
-| [Configure the OCI API Keys](?lab=3-configure-oci) | 10 minutes |
-| [Build a Conversational Inquiry using Generative AI](?lab=4-using-genai) | 20 minutes |
-| [Generate Email to Apply to a School](?lab=5-apply-to-school) | 15 minutes |
-| [Run the Application](?lab=6-run-app) | 5 minutes |
+| [Criando uma aplicação APEX](?lab=1-create-app) | 5 minutos |
+| [Visualizar Escolas no Mapa](?lab=2-schools-on-map) | 10 minutos |
+| [Configurar as Chaves da API OCI](?lab=3-configure-oci) | 10 minutos |
+| [Construir uma Consulta Conversacional usando IA Generativa](?lab=4-using-genai) | 20 minutos |
+| [Gerar E-mail para Aplicação em uma Escola](?lab=5-apply-to-school) | 15 minutos |
+| [Executar a Aplicação](?lab=6-run-app) | 5 minutos |
 
-Total estimated time: 60 minutes
+Tempo total estimado: 60 minutos
 
-### **Let's Get Started!**
+### **Vamos Começar!**
 
-If the menu is not displayed, you can open by clicking the menu button (![Menu icon](./images/menu-button.png)) at the upper-left corner of the page.
+Se o menu não estiver visível, você pode abri-lo clicando no botão de menu (![Ícone do Menu](./images/menu-button.png)) no canto superior esquerdo da página.
 
 ## Downloads
 
-If you are stuck or the app is not working as expected, you can download and install the completed app as follows:
+Se você tiver algum problema ou o aplicativo não estiver funcionando como esperado, você pode baixar e instalar o aplicativo concluído da seguinte maneira:
 
-1. [Click here](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/labfiles/nyc-gen-ai-app.zip) to download the completed application zip file.
+1. [Clique aqui](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/labfiles/nyc-gen-ai-app.zip) para baixar o arquivo zip do aplicativo concluído.
 
-2. Import the **nyc-gen-ai-app.zip** file into your workspace. To import the app, go to **App Builder > Import**.
+2. Importe o arquivo **nyc-gen-ai-app.zip** para seu workspace. Para importar o app, vá para **App Builder > Import**.
 
-3. Follow the steps in the Install Application wizard to install the app along with the Supporting Objects.
+3. Siga os passos no assistente de Instalar Aplicação para instalar o app junto com os Objetos Suporte.
 
-4. Once the application is installed, navigate to **App Builder > Workspace Utilities > Web Credentials**.
+4. Uma vez que a aplicação esteja instalada, navegue até **App Builder > Workspace Utilities > Web Credentials**.
 
-5. Edit the **apex\_ai\_cred** details to match with your OCI API Key. Refer to the lab: [Configure the OCI API Keys](?lab=3-configure-oci) to create an OCI API Key.
+5. Edite os detalhes de **apex\_ai\_cred** para que correspondam à sua Chave da API OCI. Consulte o lab: [Configurar as Chaves da API OCI](?lab=3-configure-oci) para criar uma Chave da API OCI.
 
-     ![Web Credentials page](images/edit-web-cred.png " ")
-6. Navigate to **App Builder > Workspace Utilities > Generative AI**. Edit the **OCI Gen AI** service.
+     ![Página de Credenciais da Web](images/edit-web-cred.png " ")
+6. Navegue até **App Builder > Workspace Utilities > Generative AI**. Edite o serviço **OCI Gen AI**.
 
-    - Enter the **Compartment ID**. Refer to the [Documentation](https://docs.oracle.com/en-us/iaas/Content/GSG/Tasks/contactingsupport_topic-Locating_Oracle_Cloud_Infrastructure_IDs.htm#:~:text=Finding%20the%20OCID%20of%20a,displayed%20next%20to%20each%20compartment.) to fetch your Compartment ID. If you have only one compartment, then use the OCID from the configuration file you saved while creating your OCI API Key.
-    - For Credential, select **apex\_ai\_cred**.
-    - Click **Apply Changes**.
-    ![Generative AI page](images/edit-oci-genai.png " ")
+    - Insira o **ID do Compartimento**. Consulte a [Documentação](https://docs.oracle.com/en-us/iaas/Content/GSG/Tasks/contactingsupport_topic-Locating_Oracle_Cloud_Infrastructure_IDs.htm#:~:text=Finding%20the%20OCID%20of%20a,displayed%20next%20to%20each%20compartment.) para obter seu ID de Compartimento. Se você tiver apenas um compartimento, use o OCID do arquivo de configuração que você salvou ao criar sua Chave da API OCI.
+    - Para Credencial, selecione **apex\_ai\_cred**.
+    - Clique em **Aplicar Alterações**.
+    ![Página de IA Generativa](images/edit-oci-genai.png " ")
 
-7. All set. Now, run the application and see it in action! Follow the lab: [Run the Application](?lab=6-run-app) to run the app.
+7. Pronto. Agora, execute a aplicação e veja-a em ação! Siga o lab: [Executar a Aplicação](?lab=6-run-app) para rodar o app.
 
-## Learn More - *Useful Links*
+## Saiba Mais - *Links Úteis*
 
 - [OCI Generative AI](https://www.oracle.com/artificial-intelligence/generative-ai/large-language-models/)
 - [APEX on Autonomous](https://apex.oracle.com/autonomous)
 - [APEX Collateral](https://www.oracle.com/database/technologies/appdev/apex/collateral.html)
-- [Tutorials](https://apex.oracle.com/en/learn/tutorials)
-- [Community](https://apex.oracle.com/community)
-- [External Site + Slack](http://apex.world)
+- [Tutoriais](https://apex.oracle.com/en/learn/tutorials)
+- [Comunidade](https://apex.oracle.com/community)
+- [Site Externo + Slack](http://apex.world)
 
-## Acknowledgements
+## Agradecimentos
 
- - **Authors** - Toufiq Mohammed, Senior Product Manager; Apoorva Srinivas, Senior Product Manager
- - **Last Updated By/Date** - Apoorva Srinivas, Senior Product Manager, July 2024
+ - **Autores** - Toufiq Mohammed, Senior Product Manager; Apoorva Srinivas, Senior Product Manager
+ - **Última Atualização Por/Data** - Apoorva Srinivas, Senior Product Manager, julho de 2024
