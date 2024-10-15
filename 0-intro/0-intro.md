@@ -40,7 +40,7 @@ Tempo Estimado: 60 minutos
 
 - Este workshop utiliza o Serviço de IA Generativa da OCI. O serviço de IA Generativa da OCI está disponível em regiões limitadas. Para verificar se sua região de cloud suporta o serviço de IA Generativa da OCI, visite a [documentação](https://docs.oracle.com/en-us/iaas/Content/generative-ai/overview.htm#regions).
 
-- Um compartimento OCI. Uma conta Oracle Cloud vem com dois compartimentos pré-configurados - A tenência (compartimento raiz) e o ManagedCompartmentForPaaS (criado pela Oracle para serviços da Plataforma Oracle).
+- Um compartimento OCI. Uma conta Oracle Cloud vem com dois compartimentos pré-configurados - A tenancy (compartimento raiz) e o ManagedCompartmentForPaaS (criado pela Oracle para serviços da Plataforma Oracle).
 
 - O usuário logado deve ter privilégios necessários para criar e gerenciar instâncias de Autonomous Database nesse compartimento. Você pode configurar esses privilégios por meio de uma OCI IAM Policy. Se você estiver usando uma conta Free Tier, é provável que já possua todos os privilégios necessários.
 
