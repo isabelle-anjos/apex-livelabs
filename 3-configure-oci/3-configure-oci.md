@@ -1,79 +1,89 @@
-# Configure the OCI API keys
+# Configure a Autenticação entre os serviços APEX e Generative AI
 
-## Introduction
+## Introdução
 
-In this workshop, you use OCI Generative AI as the AI provider to build a conversational chatbot. To use the OCI Generative AI Service in APEX, you need to configure the OCI API keys. In Oracle Cloud Infrastructure (OCI), API keys are used for secure authentication when accessing OCI resources through REST APIs.
+Neste workshop, você utilizará o **OCI Generative AI** como provedor de IA para criar um chatbot conversacional. Para usar o **OCI Generative AI Service** no APEX, é necessário configurar as chaves **OCI API Keys**. No **Oracle Cloud Infrastructure (OCI)**, as chaves de API são usadas para autenticação segura ao acessar recursos da OCI por meio de **REST APIs**.
 
-OCI API keys consist of two parts: a **Public key** and a **Private key**. You use the OCI console to generate the Private/Public key pair.
+As chaves OCI API consistem em duas partes: uma **Public key** e uma **Private key** e serão disponibilizadas para este laboratório.
 
-**Note:** OCI Generative AI service is available in limited regions. To see if your cloud region supports OCI Generative AI service, visit the [documentation](https://docs.oracle.com/en-us/iaas/Content/generative-ai/overview.htm#regions).
+**Nota:** O serviço OCI Generative AI está disponível em regiões limitadas. Para verificar se sua região suporta o serviço, consulte a [documentação](https://docs.oracle.com/en-us/iaas/Content/generative-ai/overview.htm#regions).
 
-**Note:** The screenshots in this workshop are taken using Dark Mode in APEX 24.1.2
+**Tempo Estimado:** 10 minutos
 
-Estimated Time: 10 Minutes
+---
 
-### Objectives
+### *Objetivos*
 
-In this lab, you:
+Neste laboratório, você:
 
-- Generate API Keys using OCI Console
-- Create Web Credentials in Oracle APEX
+- Irá instalar uma **Aplicação** pronta no APEX Workspace
+- Criará **Web Credentials** no **Oracle APEX**
 
-## Task 2: Create Web Credentials in Oracle APEX
+---
 
-Web credentials are used to authenticate connection to external REST services, or REST Enabled SQL services from APEX.
+## Passo 1: Instalar a Aplicação pronta no APEX Workspace
 
-Creating Web Credentials securely stores and encrypts authentication credentials for use by Oracle APEX components and APIs. Credentials cannot be retrieved back in clear text. Credentials are stored at the workspace level and therefore are visible to all applications.
+1. [Clique aqui](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/labfiles/nyc-gen-ai-app.zip) para baixar o arquivo ZIP do aplicativo concluído.
 
-To create a Web Credential in Oracle APEX:
+2. Importe o arquivo **nyc-gen-ai-app.zip** para seu workspace. Para isso, vá para **App Builder > Import**.
 
-1. Login into your Oracle APEX workspace.
+3. Siga os passos no assistente **Install Application** para instalar o aplicativo e seus objetos de suporte.
 
-   ![Login into your APEX account](images/apex-login.png " ")
+4. Navegue até **App Builder > Workspace Utilities > Generative AI** e edite o serviço **OCI Gen AI**:
 
-2. On the Workspace home page, click **App Builder**.
+    - Insira o **Compartiment ID**. Consulte a [Documentação](https://docs.oracle.com/en-us/iaas/Content/GSG/Tasks/contactingsupport_topic-Locating_Oracle_Cloud_Infrastructure_IDs.htm#:~:text=Finding%20the%20OCID%20of%20a,displayed%20next%20to%20each%20compartment.) para localizar o ID do Compartimento. Se você tiver apenas um compartimento, use o OCID do arquivo de configuração salvo ao criar sua Chave da API OCI.
+    - Para Credential, selecione **apex\_ai\_cred**.
+    - Clique em **Apply Changes**.
 
-   ![Click App Builder](images/app-builder1.png " ")
+    ![Página de IA Generativa](images/edit-oci-genai.png " ")
 
-3. Click **Workspace Utilities**.
 
-   ![Click Workspace Utilities](images/workspace-utilities.png " ")
+---
 
-4. Select **Web Credentials**.
+## Tarefa 2: Criar Web Credentials no Oracle APEX
 
-   ![Click Web Credentials](images/sc-web-creds.png " ")
+As **Web Credentials** são usadas para autenticar conexões com serviços REST externos ou serviços **REST Enabled SQL** no APEX.
 
-5. Click **Create**.
+Criar **Web Credentials** permite armazenar e criptografar as credenciais de autenticação de forma segura para uso em componentes e APIs do Oracle APEX. Essas credenciais não podem ser recuperadas em texto simples e são armazenadas no nível do workspace, ficando visíveis para todos os aplicativos.
 
-   ![Create Web Credentials](images/create-wc.png " ")
+Para criar uma **Web Credential** no Oracle APEX:
 
-6. Enter the following details using the configuration file you copied in the previous task.
+1. Faça login no seu workspace no **Oracle APEX**.
 
-    - **Name**: apex\_ai\_cred
+   ![Login no APEX](images/apex-login.png " ")
 
-    - **Authentication Type**: OCI Native Authentication
+2. Na página inicial do Workspace, clique em **App Builder**.
 
-    - **OCI User ID**: Enter the OCID of the Oracle Cloud user Account. You can find the OCID in the Configuration File Preview generated during the API Key creation.
-    Your OCI User ID looks similar to **ocid1.user.oc1..aaaaaaaa\*\*\*\*\*\*wj3v23yla**
+   ![Clique em App Builder](images/app-builder1.png " ")
 
-    - **OCI Private Key**: Open the private key (.pem file) downloaded in the previous task. Copy and paste the API Key.
+3. Clique em **Workspace Utilities**.
 
-      ![Private key file](images/private-key.png " ")
+   ![Clique em Workspace Utilities](images/workspace-utilities.png " ")
 
-    - **OCI Tenancy ID**: Enter the OCID for Tenancy. Your Tenancy ID looks similar to **ocid1.tenancy.oc1..aaaaaaaaf7ush\*\*\*\*cxx3qka**
+4. Selecione **Web Credentials**.
 
-    - **OCI Public Key Fingerprint**: Enter the Fingerprint ID. Your Fingerprint ID looks similar to **a8:8e:c2:8b:fe:\*\*\*\*:ff:4d:40**
+   ![Clique em Web Credentials](images/sc-web-creds.png " ")
 
-   ![Web Credentials page](images/web-creds.png " ")
+5. Clique em **Create**.
 
-5. Click **Create**.
+   ![Crie as Web Credentials](images/create-wc.png " ")
 
-## Summary
+6. Insira os seguintes detalhes usando o arquivo de configuração copiado na tarefa anterior:
 
-You now know how to generate API Keys using OCI console. Furthermore, you know how to create web credentials in Oracle APEX.
+    - **Name**: apex\_ai\_cred  
+    - **Authentication Type**: OCI Native Authentication  
+    - **OCI User ID**: Insira o OCID do usuário na conta Oracle Cloud. Você pode encontrá-lo na visualização do arquivo de configuração gerado ao criar as chaves de API. O OCID do usuário se parece com: **ocid1.user.oc1..aaaaaaaa\*\*\*\*\*\*wj3v23yla**  
+    - **OCI Private Key**: Abra o arquivo de chave privada (.pem) baixado na tarefa anterior. Copie e cole a chave privada.  
+      ![Arquivo de chave privada](images/private-key.png " ")  
+    - **OCI Tenancy ID**: Insira o OCID do tenancy. O ID do tenancy se parece com: **ocid1.tenancy.oc1..aaaaaaaaf7ush\*\*\*\*cxx3qka**  
+    - **OCI Public Key Fingerprint**: Insira o ID do Fingerprint. O Fingerprint se parece com: **a8:8e:c2:8b:fe:\*\*\*\*:ff:4d:40**
 
-You may now **proceed to the next lab**.
+   ![Página de Web Credentials](images/web-creds.png " ")
 
-## Acknowledgments
-- **Author** - Apoorva Srinivas, Senior Product Manager
-- **Last Updated By/Date** - Apoorva Srinivas, Senior Product Manager, July 2024
+7. Clique em **Create**.
+
+---
+
+## Resumo
+
+Agora você sabe como criar **Web Credentials** no Oracle APEX e pode **prosseguir para o próximo laboratório**.

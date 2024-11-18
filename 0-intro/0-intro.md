@@ -58,7 +58,7 @@ Se o menu não estiver visível, você pode abri-lo clicando no botão de menu (
 
 ## Downloads
 
-Se você tiver algum problema ou o aplicativo não estiver funcionando como esperado, você pode baixar e instalar o aplicativo concluído da seguinte maneira:
+Você deve baixar e instalar o aplicativo da seguinte maneira:
 
 1. [Clique aqui](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/labfiles/nyc-gen-ai-app.zip) para baixar o arquivo zip do aplicativo concluído.
 

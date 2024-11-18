@@ -7,23 +7,19 @@
       "filename": "0-intro/0-intro.md"
     },
     {
-      "title": "Vamos Começar",
+      "title": "Vamos Começar!",
       "filename": "1-sign-up-apex/1-sign-up-apex.md"
     },
     {
-      "title": "Lab 1: Create an APEX App",
-      "filename": "2-create-app/1-create-app.md"
-    },
-    {
-      "title": "Lab 3: Configure the OCI API Keys",
+      "title": "Lab 2: Configure a Autenticação entre os serviços APEX e Generative AI",
       "filename": "3-configure-oci/3-configure-oci.md"
     },
     {
-      "title": "Lab 4: Build a Conversational Inquiry using Generative AI",
+      "title": "Lab 3: Build a Conversational Inquiry using Generative AI",
       "filename": "4-using-genai/4-using-genai.md"
     },
     {
-      "title": "Lab 6: Run the Application",
+      "title": "Lab 4: Run the Application",
       "filename": "5-run-app/6-run-app.md"
     },
     {
