@@ -68,7 +68,7 @@ Se você tiver algum problema ou o aplicativo não estiver funcionando como espe
 
 4. Uma vez que a aplicação esteja instalada, navegue até **App Builder > Workspace Utilities > Web Credentials**.
 
-5. Edite os detalhes de **apex\_ai\_cred** para que correspondam à sua Chave da API OCI. Consulte o lab: [Configure the OCI API Keys](?lab=3-configure-oci) para criar uma Chave da API OCI.
+5. Edite os detalhes de **apex\_ai\_cred** para que correspondam à sua Chave da API OCI. Consulte o lab: [Configure the OCI API Keys](?lab=3-configure-oci) para configurar a Chave da API OCI.
 
      ![Página de Credenciais da Web](images/edit-web-cred.png " ")
 6. Navegue até **App Builder > Workspace Utilities > Generative AI**. Edite o serviço **OCI Gen AI**.
@@ -88,8 +88,3 @@ Se você tiver algum problema ou o aplicativo não estiver funcionando como espe
 - [Tutoriais](https://apex.oracle.com/en/learn/tutorials)
 - [Comunidade](https://apex.oracle.com/community)
 - [Site Externo + Slack](http://apex.world)
-
-## Agradecimentos
-
- - **Autores** - Toufiq Mohammed, Senior Product Manager; Apoorva Srinivas, Senior Product Manager
- - **Última Atualização Por/Data** - Apoorva Srinivas, Senior Product Manager, julho de 2024
