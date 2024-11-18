@@ -1,106 +1,98 @@
-# Build a Conversational Inquiry about Schools using Generative AI
+# Criar um Chat Conversacional sobre Escolas com Generative AI
 
-## Introduction
+## Introdução
 
-In this lab, you learn to build a conversational inquiry about schools using Generative AI wherein a user can ask questions about a school in chat and the chat widget uses Generative AI to provide context sensitive answers. This lab makes use of the latest feature of APEX 24.1 called the **Open AI Assistant**.
+Neste laboratório, você aprenderá a construir uma consulta conversacional sobre escolas usando **Generative AI**, onde o usuário pode fazer perguntas sobre uma escola via chat, e o widget de chat utiliza **Generative AI** para fornecer respostas sensíveis ao contexto. Este laboratório utiliza o mais recente recurso do APEX 24.1 chamado **Open AI Assistant**.
 
-**Note:** The screenshots in this workshop are taken using Dark Mode in APEX 24.1.2
+**Tempo Estimado:** 20 minutos
 
-Estimated Time: 20 minutes
+---
 
-<!-- Watch the video below for a quick walk-through of the lab.
-[Create an APEX App](videohub:1_a6bi2e62) -->
+### *Objetivos*
 
-### Objectives
+Neste laboratório, você:
 
-In this lab, you will:
+- Configurará um serviço de **Generative AI** no seu workspace
+- Criará um chatbot conversacional usando **Generative AI**
 
-- Configure a Generative AI service in your workspace
-- Build a conversational chatbot using Generative AI
+---
 
-## Task 1: Configure Generative AI Service
+## Tarefa 1: Configurar o Serviço de Generative AI
 
-To use the Generative AI service in APEX, you need to first configure it at the workspace level.
+Para usar o serviço de **Generative AI** no APEX, você deve configurá-lo no nível do workspace.
 
-1. From the App Builder, navigate to **Workspace Utilities** > **All Workspace Utilities**.
+1. No **App Builder**, navegue até **Workspace Utilities > All Workspace Utilities**.
 
-    ![Workspace homepage](images/ws-utilities.png ' ')
+    ![Página inicial do Workspace](images/ws-utilities.png ' ')
 
-2. Select **Generative AI**.
+2. Selecione **Generative AI**.
 
-    ![Workspace Utilities page](images/select-genai.png ' ') 
+    ![Página de Workspace Utilities](images/select-genai.png ' ') 
 
-3. Click **Create** to configure a Generative AI Service.
+3. Clique em **Create** para configurar um serviço de **Generative AI**.
 
-     ![Gen AI services page](images/create-genai.png ' ') 
+     ![Página de serviços Gen AI](images/create-genai.png ' ') 
 
-4. In this workshop, you use OCI Generative AI Service as the AI provider. Enter/select the following:
+4. Neste laboratório, você usará o **OCI Generative AI Service** como o provedor de IA. Insira/seleciona as seguintes informações:
 
-    - AI Provider: **OCI Generative AI Service**
-    - Name: **OCI Gen AI**
-    - Static ID: **oci\_gen\_ai**
-    - Compartment ID: *Enter your OCI Compartment ID*. Refer to the [Documentation](https://docs.oracle.com/en-us/iaas/Content/GSG/Tasks/contactingsupport_topic-Locating_Oracle_Cloud_Infrastructure_IDs.htm#:~:text=Finding%20the%20OCID%20of%20a,displayed%20next%20to%20each%20compartment.) to fetch your Compartment ID. If you have only one compartment, then use the OCID from the configuration file you saved in Lab 3.
-    - Region: **us-chicago-1** (Currently, the OCI Generative AI Service is only available in limited regions)
-    - Model ID: **meta.llama-3-70b-instruct** (You can also select other models as per your choice. Refer to the [documentation](https://docs.oracle.com/en-us/iaas/Content/generative-ai/use-playground-chat.htm#chat))
-    - Used by App Builder: Enable the toggle button to **ON**. Note that the Base URL is auto generated.
-    - Credentials: **apex\_ai\_cred**
+    - **AI Provider:** **OCI Generative AI Service**  
+    - **Name:** **OCI Gen AI**  
+    - **Static ID:** **oci\_gen\_ai**  
+    - **Compartment ID:** Insira o ID do Compartimento OCI. Consulte a [Documentação](https://docs.oracle.com/en-us/iaas/Content/GSG/Tasks/contactingsupport_topic-Locating_Oracle_Cloud_Infrastructure_IDs.htm#:~:text=Finding%20the%20OCID%20of%20a,displayed%20next%20to%20each%20compartment.) para localizar o ID do Compartimento. Caso tenha apenas um compartimento, use o OCID do arquivo de configuração salvo no **Lab 3**.  
+    - **Region:** **us-chicago-1** (Atualmente, o serviço OCI Generative AI está disponível em regiões limitadas)  
+    - **Model ID:** **meta.llama-3-70b-instruct** (Você pode selecionar outros modelos disponíveis. Consulte a [documentação](https://docs.oracle.com/en-us/iaas/Content/generative-ai/use-playground-chat.htm#chat))  
+    - **Used by App Builder:** Habilite o botão de alternância para **ON**. (O **Base URL** será gerado automaticamente.)  
+    - **Credentials:** **apex\_ai\_cred**  
 
-    Click **Create**.
+    Clique em **Create**.
 
-    <!--In this workshop, you use Open AI as the AI provider. Enter/select the following:
+    ![Página de serviços Gen AI](images/oci-gen-ai-details.png ' ')
 
-    - AI Provider: **Open AI**
-    - Name: **Open AI**
-    - Used by App Builder: Enable the toggle button to **ON**
-    - API Key: Enter your Open AI API key. To signup for an Open AI key, visit [platform.openai.com](https://platform.openai.com/)
+---
 
-    Click **Create**. -->
+## Tarefa 2: Criar a Página de Chat
 
-    ![Gen AI services page](images/oci-gen-ai-details.png ' ')
+1. Navegue até a página inicial do aplicativo e clique em **Create Page**. Selecione **Blank Page**.
 
-## Task 2: Create the Chat Page
+    ![Página inicial do aplicativo](images/create-blank-page.png ' ')
 
-1. Navigate to your application homepage and click **Create Page**. Select **Blank Page**.
+2. Na janela de diálogo **Create Blank Page**, insira/selecione o seguinte:
+    - **Page Number:** **3**  
+    - **Name:** **Learn More**  
+    - **Page Mode:** **Modal Dialog**  
 
-    ![App home page](images/create-blank-page.png ' ')
+    Clique em **Create Page**.
 
-2. In the Create Blank page dialog, enter/select the following:
-    - Page Number: **3**
-    - Name: **Learn More**
-    - Page Mode: **Modal Dialog**
+    ![Assistente Create Page](images/learn-more.png ' ')
 
-    Click **Create Page**.
+3. Com **Page 3: Learn More** selecionado na **Rendering Tree**, insira/selecione o seguinte no **Property Editor**:
+    - **Appearance > Template Options:**
+        - **General:** Marque **Remove Body Padding**  
+        - **Content Padding:** **Remove Padding**
 
-    ![create page wizard](images/learn-more.png ' ')
+    ![Configuração de Template](images/learn-more-template.png ' ')
 
-3. With **Page 3: Learn More** selected in the Rendering Tree, enter/select the following in the Property Editor:
-    - Appearance > Template Options:
-        - General: Check **Remove Body Padding**
-        - Content Padding: **Remove Padding**
+4. Na **Rendering Tree**, abaixo de **Components**, clique com o botão direito em **Content Body** e selecione **Create Region**.
 
-    ![create page wizard](images/learn-more-template.png ' ')
+    ![Criar Região](images/create-region.png ' ')
 
-4. In the rendering tree, under Components, right-click **Content Body** and select **Create Region**.
+5. No **Property Editor**, insira/selecione o seguinte:
 
-    ![Page Designer](images/create-region.png ' ')
+    - **Identification > Name:** **Chat**
 
-5. In the Property Editor, enter/select the following:
+        ![Configuração de Identificação](images/chat-to1.png =40%x*)
 
-    - Identification > Name: **Chat**
+    - **Appearance > Template Options:**
+        - **Common:**
+            - **General:** Marque **Remove Body Padding**  
+            - **Body Height:** **320px**  
+            - **Header:** **Hidden**  
+        - **Advanced > Bottom Margin:** **None**
 
-        ![Page Designer](images/chat-to1.png =40%x*)
+        ![Configuração de Aparência](images/chat-to2.png =50%x*)
 
-    - Under Appearance > Template Options:
-        - Under Common:
-            - General: Check **Remove Body Padding**
-            - Body Height: **320px**
-            - Header: **Hidden**
-        - Advanced > Bottom Margin: **None**
-
-        ![Page Designer](images/chat-to2.png =50%x*)
-
-    - Advanced > Static ID: **chat**
-        ![Page Designer](images/chat-to3.png =40%x*)
+    - **Advanced > Static ID:** **chat**  
+        ![Configuração Avançada](images/chat-to3.png =40%x*)
 
 ## Task 3: Configure the Prompt Context
 
@@ -337,9 +329,3 @@ In this task, we add a common 'Ask Question' button where a user can ask generic
 You now know how configure Generative AI service in your APEX workspace. You also learnt to build a conversational Chatbot using Generative AI.
 
 You may now **proceed to the next lab**.
-
-## Acknowledgments
-
- - **Authors** - Toufiq Mohammed, Senior Product Manager; Apoorva Srinivas, Senior Product Manager
- - **Contributing Author** - Pankaj Goyal, Member Technical Staff
- - **Last Updated By/Date** - Apoorva Srinivas, Senior Product Manager, August 2024
