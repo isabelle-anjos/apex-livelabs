@@ -15,20 +15,12 @@
       "filename": "1-create-app/1-create-app.md"
     },
     {
-      "title": "Lab 2: Visualize Schools on a Map",
-      "filename": "2-schools-on-map/2-schools-on-map.md"
-    },
-    {
       "title": "Lab 3: Configure the OCI API Keys",
       "filename": "3-configure-oci/3-configure-oci.md"
     },
     {
       "title": "Lab 4: Build a Conversational Inquiry using Generative AI",
       "filename": "4-using-genai/4-using-genai.md"
-    },
-    {
-      "title": "Lab 5: Generate Email to Apply to a School using Gen AI",
-      "filename": "5-apply-to-school/5-apply-to-school.md"
     },
     {
       "title": "Lab 6: Run the Application",

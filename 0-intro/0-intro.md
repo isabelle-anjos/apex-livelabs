@@ -2,7 +2,7 @@
 
 ## Sobre este Workshop
 
-Desde a síntese precisa de dados complexos até a criação de respostas contextuais, a IA Generativa está à frente de uma mudança tecnológica, prometendo redefinir como navegamos e utilizamos conhecimento em nossas interações diárias. Com a introdução do desenvolvimento assistido por IA no Oracle APEX, habilitar suas aplicações com recursos de IA generativa nunca foi tão fácil.
+Desde a síntese de dados complexos até a criação de respostas contextuais, a IA Generativa está à frente de uma mudança tecnológica, prometendo redefinir como navegamos e utilizamos conhecimento em nossas interações diárias. Com a introdução do desenvolvimento assistido por IA no Oracle APEX, habilitar suas aplicações com recursos de IA generativa nunca foi tão fácil.
 
 Neste workshop, você aprenderá a trazer recursos de IA generativa baseados em grandes modelos de linguagem (LLMs) para suas aplicações construídas com Oracle APEX, sua plataforma low-code favorita. O serviço de IA Generativa pode ser acessado por meio de APIs REST, e ao usar os poderosos recursos de REST Data Source do APEX, você pode incorporar essa tecnologia avançada em suas aplicações de maneira simples e de baixa codificação.
 
@@ -10,10 +10,16 @@ Neste workshop, você aprenderá a trazer recursos de IA generativa baseados em 
 
 [Oracle Cloud Infrastructure Generative AI](https://www.oracle.com/artificial-intelligence/generative-ai/large-language-models/) é um serviço totalmente gerenciado que fornece um conjunto de modelos de linguagem de última geração e personalizáveis que cobrem uma ampla variedade de casos de uso para geração de texto. A IA Generativa atualmente suporta os seguintes modelos fundamentais pré-treinados disponíveis da Meta e Cohere:
 
-- Llama 2
-- Command
-- Summarize
-- Embed
+
+| Modelo           | Descrição                                                                                             | Principais Características                            | Idiomas Suportados |
+|------------------|-------------------------------------------------------------------------------------------------------|-------------------------------------------------------|---------------------|
+| **Cohere Command R**   | Modelo otimizado para aplicações de **retrieval-augmented generation (RAG)**.                     | Alta eficiência, baixa latência, janela de contexto maior | 10 idiomas          |
+| **Cohere Command R+**  | Versão aprimorada do Command R para **casos de uso especializados** como geração de conteúdo longo. | Gera respostas contextuais e detalhadas                | 10 idiomas          |
+| **Cohere Embed**       | Modelos de embeddings para **converter texto em representações vetoriais**.                     | Versões “Light” são menores e mais rápidas            | Inglês e Multilíngue |
+| **Meta Llama 3.1**     | Modelos open source de última geração com **alto desempenho e diversidade de respostas**.        | Janela de contexto de 128K e suporte para 8 idiomas   | 8 idiomas           |
+| **Meta Llama 3.2 90B**     | Modelos open source de última geração com capacidade de análise de texto e imagem.        | Janela de contexto de 128K e suporte para 8 idiomas   |            |
+{: title=" "}
+
 
 Você pode ler mais sobre esses modelos na [documentação](https://docs.oracle.com/en-us/iaas/Content/generative-ai/pretrained-models.htm). -->
 
@@ -31,19 +37,6 @@ Tempo Estimado: 60 minutos
 
 ## Pré-requisitos
 
-- Uma conta paga na Oracle Cloud Infrastructure (OCI) ou uma conta GRATUITA na Oracle Cloud com $300 em créditos por 30 dias para usar em outros serviços. Saiba mais em: [oracle.com/cloud/free/](https://www.oracle.com/cloud/free/). A conta OCI deve ser criada ou assinada em uma das regiões que suportam o Serviço de IA Generativa da OCI. Atualmente, o Serviço de IA Generativa da OCI é suportado nas seguintes regiões:
-
-    - Centro-Oeste dos EUA (Chicago)
-    - Centro da Alemanha (Frankfurt)
-    - Sul do Reino Unido (Londres)
-    - Leste do Brasil (São Paulo)
-
-- Este workshop utiliza o Serviço de IA Generativa da OCI. O serviço de IA Generativa da OCI está disponível em regiões limitadas. Para verificar se sua região de cloud suporta o serviço de IA Generativa da OCI, visite a [documentação](https://docs.oracle.com/en-us/iaas/Content/generative-ai/overview.htm#regions).
-
-- Um compartimento OCI. Uma conta Oracle Cloud vem com dois compartimentos pré-configurados - A tenancy (compartimento raiz) e o ManagedCompartmentForPaaS (criado pela Oracle para serviços da Plataforma Oracle).
-
-- O usuário logado deve ter privilégios necessários para criar e gerenciar instâncias de Autonomous Database nesse compartimento. Você pode configurar esses privilégios por meio de uma OCI IAM Policy. Se você estiver usando uma conta Free Tier, é provável que já possua todos os privilégios necessários.
-
 - Um workspace APEX 24.1.2. Recomendamos que você se inscreva para um workspace em [apex.oracle.com](https://apex.oracle.com). Consulte o lab [Get Started: Option 3](?lab=1-sign-up-apex#Option3:apexoraclecom) para se inscrever em um novo workspace.
 
 *Nota: Este workshop pressupõe o uso do Oracle APEX 24.1.2. Alguns recursos podem não estar disponíveis em versões anteriores, e as instruções, fluxo e capturas de tela podem diferir se você usar uma versão mais antiga do Oracle APEX.*
@@ -53,10 +46,8 @@ Tempo Estimado: 60 minutos
 | Módulo | Tempo Estimado |
 | --- | --- |
 | [Criando uma aplicação APEX](?lab=1-create-app) | 5 minutos |
-| [Visualizar Escolas no Mapa](?lab=2-schools-on-map) | 10 minutos |
 | [Configurar as Chaves da API OCI](?lab=3-configure-oci) | 10 minutos |
 | [Construir uma Consulta Conversacional usando IA Generativa](?lab=4-using-genai) | 20 minutos |
-| [Gerar E-mail para Aplicação em uma Escola](?lab=5-apply-to-school) | 15 minutos |
 | [Executar a Aplicação](?lab=6-run-app) | 5 minutos |
 
 Tempo total estimado: 60 minutos
